@@ -1,45 +1,27 @@
 import React from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "../../redux/cartReducer";
+import { resetCart } from "../../redux/cartReducer";
 
 const Cart = () => {
-  const data = [
-    {
-      id: 1001,
-      img: "https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, consequuntur sint? Blanditiis magnam nam, nihil a culpa quia eius ducimus?",
-      title: "Long Sleeve Graphic T-shirt",
-      isNew: true,
-      oldPrice: 20,
-      price: 15,
-    },
-    {
-      id: 1002,
-      img: "https://images.pexels.com/photos/1972115/pexels-photo-1972115.jpeg?auto=compress&cs=tinysrgb&w=600",
-      des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, consequuntur sint? Blanditiis magnam nam, nihil a culpa quia eius ducimus?",
-      title: "T-shirt",
-      isNew: true,
-      oldPrice: 30,
-      price: 25,
-    },
-    {
-      id: 1003,
-      img: "https://images.pexels.com/photos/1375849/pexels-photo-1375849.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      title: "Shorts",
-      des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, consequuntur sint? Blanditiis magnam nam, nihil a culpa quia eius ducimus?",
-      isNew: false,
-      oldPrice: 80,
-      price: 70.85,
-    },
-  ];
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.cart.products);
+  const totalPrice = () => {
+    let total = 0;
+    products.forEach((item) => (total += item.quantity * item.price));
+    return total.toFixed(2);
+  };
+
   return (
     <div className="w-[500px] px-4 bg-gray-100 rounded-md fixed top-20 right-4">
       <h2 className="text-3xl font-semibold mb-6 mt-4">
         Products on your Cart
       </h2>
-      <div className="h-[55vh] overflow-y-scroll">
-        {data?.map((item) => (
+      <div className="h-auto py-2 max-h-[450px] border-b-[1px] border-b-red-700 overflow-y-scroll scrollbarHide">
+        {products?.map((item) => (
           <div
-            key={item.id}
+            key={item._id}
             className="flex items-center justfy-between gap-4 mb-6"
           >
             <div className="w-1/5">
@@ -48,11 +30,22 @@ const Cart = () => {
             <div className="w-3/5 flex flex-col gap-4">
               <h2 className="text-xl font-semibold">{item.title}</h2>
               <p className="text-[14px] text-gray-800">
-                {item.des?.substring(0, 100)}
+                {item.desc?.substring(0, 100)}
               </p>
-              <p className="text-base text-blue-700">1 X ${item.price}</p>
+              <div className="flex justify-between">
+                <p className="text-base text-blue-700">
+                  {item.quantity} X ${item.price}
+                </p>
+                <p className="text-base font-semibold text-blue-900 flex items-center gap-2">
+                  <span className="text-sm font-normal">Product Total:</span>$
+                  {item.price * item.quantity}
+                </p>
+              </div>
             </div>
-            <div className="ml-4 text-red-600 cursor-pointer">
+            <div
+              onClick={() => dispatch(removeItem(item._id))}
+              className="ml-4 text-red-600 cursor-pointer"
+            >
               <DeleteOutlineIcon />
             </div>
           </div>
@@ -60,7 +53,7 @@ const Cart = () => {
       </div>
       <div className="flex justify-between items-center py-4 text-lg uppercase font-bold">
         <h2>Subtotal</h2>
-        <p>$125.00</p>
+        <p>${totalPrice()}</p>
       </div>
       <div>
         <button className="flex items-center justify-center gap-4 text-base font-semibold bg-blue-600 text-white w-60 uppercase h-10 mb-4 hover:bg-blue-900 duration-300">
@@ -68,7 +61,10 @@ const Cart = () => {
         </button>
       </div>
       <div>
-        <button className="text-red-600 text-base font-semibold mb-4 hover:underline underline-offset-2 duration-300">
+        <button
+          onClick={() => dispatch(resetCart())}
+          className="text-red-600 text-base font-semibold mb-4 hover:underline underline-offset-2 duration-300"
+        >
           Reset Cart
         </button>
       </div>

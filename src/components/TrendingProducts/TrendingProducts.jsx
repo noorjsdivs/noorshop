@@ -1,14 +1,14 @@
 import React from "react";
 import Card from "../Card/Card";
-import { FeaturedProductsData } from "../../constants";
+import { TrendingProductsData } from "../../constants";
 
-const FeaturedProducts = () => {
+const TrendingProducts = () => {
   return (
     <div className="max-w-screen-2xl flex flex-col gap-10 mx-auto py-16 px-6 border-b-[1px] border-gray-300">
       {/* ================== Top container start here =================== */}
       <div className="flex flex-col xl:flex-row items-center justify-between">
         <h3 className="w-full xl:w-2/5 text-2xl font-bold uppercase text-center xl:text-left">
-          Featured products
+          Trending products
         </h3>
         <p className="w-full xl:w-3/5 text-gray-500 leading-relaxed text-center xl:text-left">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla non
@@ -21,7 +21,7 @@ const FeaturedProducts = () => {
       {/* ================== Top container end here ===================== */}
       {/* ================== Bottom container start here ================ */}
       <div className="flex flex-col md:flex-row flex-wrap items-center md:items-start justify-center gap-10">
-        {FeaturedProductsData.map((item) => (
+        {TrendingProductsData.map((item) => (
           <Card item={item} key={item._id} />
         ))}
       </div>
@@ -30,4 +30,4 @@ const FeaturedProducts = () => {
   );
 };
 
-export default FeaturedProducts;
+export default TrendingProducts;

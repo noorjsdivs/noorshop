@@ -5,10 +5,12 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 
 const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
+  const products = useSelector((state) => state.cart.products);
 
   return (
     <div className="w-full bg-white sticky h-20 top-0 z-50 border-b-[1px] border-b-gray-300">
@@ -67,7 +69,7 @@ const Navbar = () => {
               >
                 <ShoppingCartOutlinedIcon />
                 <span className="absolute -top-2 -right-1 flex items-center justify-center text-[10px] w-4 h-4 rounded-full bg-blue-800 font-normal text-white">
-                  0
+                  {products.length}
                 </span>
               </div>
             </div>
