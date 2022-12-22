@@ -6,7 +6,7 @@ import TrendingProducts from "../../components/TrendingProducts/TrendingProducts
 
 const Home = () => {
   return (
-    <div>
+    <div className="w-full h-auto bg-gray-50">
       <Slider />
       <FeaturedProducts type="featured" />
       <Categories />

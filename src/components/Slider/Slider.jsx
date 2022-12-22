@@ -45,7 +45,7 @@ const Slider = () => {
           alt="ImageFour"
         />
       </div>
-      <div className="absolute w-fit left-0 right-0 mx-auto flex gap-8 bottom-24">
+      <div className="absolute w-fit left-0 right-0 mx-auto flex gap-8 bottom-52">
         <div
           onClick={prevSlide}
           className="w-14 h-12 border-[1px] border-gray-700 flex items-center justify-center hover:cursor-pointer hover:bg-blue-400 duration-300"
