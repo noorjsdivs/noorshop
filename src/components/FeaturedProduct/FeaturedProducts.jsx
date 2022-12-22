@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../Card/Card";
-import { FeaturedProductsData } from "../../constants";
+// import { FeaturedProductsData } from "../../constants";
+import { fakeProducts } from "../../constants";
 
 const FeaturedProducts = () => {
   return (
@@ -21,7 +22,7 @@ const FeaturedProducts = () => {
       {/* ================== Top container end here ===================== */}
       {/* ================== Bottom container start here ================ */}
       <div className="flex flex-col md:flex-row flex-wrap items-center md:items-start justify-center gap-10">
-        {FeaturedProductsData.map((item) => (
+        {fakeProducts.map((item) => (
           <Card item={item} key={item._id} />
         ))}
       </div>

@@ -17,15 +17,15 @@ const Products = () => {
           <div className="flex flex-col gap-1 mb-6">
             <div className="flex gap-2">
               <input type="checkbox" id="1" value={1} />
-              <label htmlFor="1">Shoes</label>
+              <label htmlFor="1">Women</label>
             </div>
             <div className="flex gap-2">
               <input type="checkbox" id="2" value={2} />
-              <label htmlFor="1">Skirts</label>
+              <label htmlFor="1">Men</label>
             </div>
             <div className="flex gap-2">
               <input type="checkbox" id="3" value={3} />
-              <label htmlFor="1">Coats</label>
+              <label htmlFor="1">Kids</label>
             </div>
           </div>
         </div>

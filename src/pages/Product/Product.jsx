@@ -22,14 +22,14 @@ const Product = () => {
         <div className="flex flex-col gap-3">
           <img
             className="w-28 h-28 object-cover cursor-pointer"
-            src={productDetails.img}
+            src={productDetails.image}
             alt="imgOne"
           />
         </div>
         <div className="w-full">
           <img
             className="w-full h-[80vh] object-cover"
-            src={productDetails.img}
+            src={productDetails.image}
             alt="MainImage"
           />
         </div>
@@ -42,7 +42,9 @@ const Product = () => {
           <span className="text-3xl font-semibold text-blue-600">
             ${productDetails.price}
           </span>
-          <p className="text-base text-gray-500">{productDetails.desc}</p>
+          <p className="text-base text-gray-500">
+            {productDetails.description}
+          </p>
         </div>
         <div className="flex items-center gap-1 w-96">
           <button
@@ -68,9 +70,9 @@ const Product = () => {
                 addToCart({
                   _id: productDetails._id,
                   title: productDetails.title,
-                  desc: productDetails.desc,
+                  desc: productDetails.description,
                   price: productDetails.price,
-                  img: productDetails.img,
+                  img: productDetails.image,
                   quantity: quantity,
                 })
               )
