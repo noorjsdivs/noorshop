@@ -5,7 +5,7 @@ import StarIcon from "@mui/icons-material/Star";
 const Card = ({ item }) => {
   const navigate = useNavigate();
   const handleProduct = () => {
-    navigate(`/product/${item.id}`, {
+    navigate(`/product/${item._id}`, {
       state: {
         item: item,
       },

@@ -1,4 +1,10 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import React from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  ScrollRestoration,
+} from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import FooterBanner from "./components/Footer/FooterBanner";
 import Navbar from "./components/Navbar/Navbar";
@@ -11,6 +17,7 @@ const Layout = () => {
   return (
     <div>
       <Navbar />
+      <ScrollRestoration />
       <Outlet />
       <FooterBanner />
       <Footer />
